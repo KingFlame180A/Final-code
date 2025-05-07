@@ -1,0 +1,143 @@
+import pygame
+import random
+pygame.init()
+
+screen = pygame.display.set_mode((800, 600))
+pygame.display.set_caption("Jetpack JoyRIde")
+clock = pygame.time.Clock()
+font = pygame.font.Font(None, 36)
+traps_image = pygame.image.load('traps.jpg').convert_alpha()
+background_image = pygame.image.load('background.jpg').convert_alpha()
+font2 = pygame.font.Font(None, 72)
+
+
+barry_image = pygame.image.load('barry.png').convert_alpha()
+
+
+framewidth = 64
+frameheight = 96
+rownum = 0
+framenum = 0
+ticker = 0
+
+
+
+bg_x1 = 0
+bg_x2 = 800
+
+score = 0 #score 
+
+class Barry:
+    def __init__(self):
+        self.y = 400
+        self.velocity = 0
+        
+    def flap(self):
+        self.velocity = -3
+        
+    def physics(self):
+        self.velocity += 0.1
+        self.y += self.velocity
+        
+    def draw(self):
+        pygame.draw.rect(screen, (255, 0, 0), (50, self.y, 30, 30))
+        
+class traps:
+    def __init__(self, x):
+        self.x = x
+        self.height = random.randint(50, 400)
+        self.gap = 150
+        self.top_traps = pygame.transform.flip(traps_image, False, True)
+        self.bottom_traps = traps_image
+
+        
+    def move(self):
+        self.x -= 2
+        
+        
+    def draw(self):
+        top_height = self.height
+        bottom_height = 800 - (self.height + self.gap)
+    
+        screen.blit(self.top_traps, (self.x, top_height - self.top_traps.get_height()))
+    
+        screen.blit(self.bottom_traps, (self.x, self.height + self.gap))
+
+def check_collision(bx, by, px, py):
+    if bx + 30 > px and bx < px + 50 and by < py:
+        return True
+    
+    if bx + 30 > px and bx < px + 50 and by + 30 > py + 150:
+        return True
+    return False
+
+traps = []
+spawn_traps = 0
+
+barry = Barry()
+ticker = 0
+running = True
+while running: # game loop---------------------------------------------------------------------------------------------
+    clock.tick(60)
+    
+    ticker+=1
+    if ticker%10 == 0:
+        ticker = 0
+    if framenum > 7:
+       framenum = 0
+    
+    bird.physics()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            bird.flap()
+            
+    spawn_traps += 1
+    if spawn_traps >= 150:
+        pipes.append(traps(800))
+        spawn_traps = 0
+        
+    for trap in traps:
+        traps.move()
+        if check_collision(50, barry.y, traps.x, traps.height):
+            running = False
+            
+    i = len(traps) - 1
+    while i >= 0:
+        if traps[i].x <= -50:
+            traps.pop(i)
+        i -= 1
+            
+    # Render section
+    screen.fill((0, 0, 0))
+    screen.blit(background_image, (bg_x1, 0))
+    screen.blit(background_image, (bg_x2, 0))
+    screen.blit(barry_image, (50, barry.y), (framewidth*framenum, rownum*frameheight, framewidth, frameheight))
+    
+    score_text = font.render("Score:", True, (255, 255, 255))
+    screen.blit(score_text, (650, 20))
+    #bird.draw()
+    
+    for pipe in pipes:
+        pipe.draw()
+    
+    bg_x1 -= 2
+    bg_x2 -= 2
+    
+    if bg_x1 <= -800:
+        bg_x1 = 800
+    if bg_x2 <= -800:
+        bg_x2 = 800
+    
+    
+    pygame.display.flip()
+    
+#---end of game loop---------------
+    
+text = font2.render("GAME OVER", True, (255, 50,50))
+screen.blit(text, (200, 200))
+pygame.display.flip()
+pygame.time.delay(2000)
+
+pygame.quit()
