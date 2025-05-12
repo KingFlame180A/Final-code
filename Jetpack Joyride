@@ -2,11 +2,12 @@ import pygame
 import random
 pygame.init()
 
-screen = pygame.display.set_mode((800, 600))
+screen = pygame.display.set_mode((800, 800))
 pygame.display.set_caption("Jetpack JoyRIde")
 clock = pygame.time.Clock()
 font = pygame.font.Font(None, 36)
-traps_image = pygame.image.load('traps.jpg').convert_alpha()
+spikeTrap_image = pygame.image.load('spikeTrap.jpg').convert_alpha()
+coin_image = pygame.image.load('coin.jpg').convert_alpha()
 background_image = pygame.image.load('background.jpg').convert_alpha()
 font2 = pygame.font.Font(None, 72)
 
@@ -23,16 +24,24 @@ ticker = 0
 
 
 bg_x1 = 0
-bg_x2 = 800
+bg_x2 = 700
 
-score = 0 #score 
+score = 0 #score
+
+class coin:
+    def __init__(self, x):
+        self.x = x
+        self.height = random.randint(50, 100)
+        self.gap = 150
+        self.top_coin = pygame.transform.flip(coin_image, False, True)
+        
 
 class Barry:
     def __init__(self):
-        self.y = 400
+        self.y = 200
         self.velocity = 0
         
-    def flap(self):
+    def fly(self):
         self.velocity = -3
         
     def physics(self):
@@ -42,13 +51,13 @@ class Barry:
     def draw(self):
         pygame.draw.rect(screen, (255, 0, 0), (50, self.y, 30, 30))
         
-class traps:
+class spikeTrap:
     def __init__(self, x):
         self.x = x
         self.height = random.randint(50, 400)
         self.gap = 150
-        self.top_traps = pygame.transform.flip(traps_image, False, True)
-        self.bottom_traps = traps_image
+        self.top_spiketrap = pygame.transform.flip(spikeTrap_image, False, True)
+        self.bottom_spikeTrap = spikeTrap_image
 
         
     def move(self):
@@ -59,10 +68,12 @@ class traps:
         top_height = self.height
         bottom_height = 800 - (self.height + self.gap)
     
-        screen.blit(self.top_traps, (self.x, top_height - self.top_traps.get_height()))
+        screen.blit(self.top_spiketrap, (self.x, top_height - self.top_spiketrap.get_height()))
     
-        screen.blit(self.bottom_traps, (self.x, self.height + self.gap))
+        screen.blit(self.bottom_spikeTrap, (self.x, self.height + self.gap))
 
+
+#--------------------------------------------------------------------
 def check_collision(bx, by, px, py):
     if bx + 30 > px and bx < px + 50 and by < py:
         return True
@@ -72,11 +83,13 @@ def check_collision(bx, by, px, py):
     return False
 
 traps = []
-spawn_traps = 0
+spawn_spikeTrap = 0
 
 barry = Barry()
 ticker = 0
 running = True
+
+
 while running: # game loop---------------------------------------------------------------------------------------------
     clock.tick(60)
     
@@ -86,21 +99,22 @@ while running: # game loop------------------------------------------------------
     if framenum > 7:
        framenum = 0
     
-    bird.physics()
+    barry.physics()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
-            bird.flap()
+            barry.fly()
             
-    spawn_traps += 1
-    if spawn_traps >= 150:
-        pipes.append(traps(800))
-        spawn_traps = 0
+    spawn_spikeTrap += 1
+    if spawn_spikeTrap >= 150:
+        print("Spike appeneded")
+        traps.append(spikeTrap(800))
+        spawn_spikeTrap = 0
         
-    for trap in traps:
-        traps.move()
-        if check_collision(50, barry.y, traps.x, traps.height):
+    for spiketrap in traps:
+        spiketrap.move()
+        if check_collision(50, barry.y, spiketrap.x, spiketrap.height):
             running = False
             
     i = len(traps) - 1
@@ -111,16 +125,16 @@ while running: # game loop------------------------------------------------------
             
     # Render section
     screen.fill((0, 0, 0))
-    screen.blit(background_image, (bg_x1, 0))
-    screen.blit(background_image, (bg_x2, 0))
+    screen.blit(background_image, (bg_x1, 150))
+    screen.blit(background_image, (bg_x2, 150))
     screen.blit(barry_image, (50, barry.y), (framewidth*framenum, rownum*frameheight, framewidth, frameheight))
     
     score_text = font.render("Score:", True, (255, 255, 255))
     screen.blit(score_text, (650, 20))
     #bird.draw()
     
-    for pipe in pipes:
-        pipe.draw()
+    for spiketrap in traps:
+        spiketrap.draw()
     
     bg_x1 -= 2
     bg_x2 -= 2
@@ -136,8 +150,9 @@ while running: # game loop------------------------------------------------------
 #---end of game loop---------------
     
 text = font2.render("GAME OVER", True, (255, 50,50))
-screen.blit(text, (200, 200))
+screen.blit(text, (100, 100))
 pygame.display.flip()
 pygame.time.delay(2000)
 
 pygame.quit()
+
