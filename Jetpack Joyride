@@ -11,17 +11,13 @@ coin_image = pygame.image.load('coin.jpg').convert_alpha()
 background_image = pygame.image.load('background.jpg').convert_alpha()
 font2 = pygame.font.Font(None, 72)
 
-
-barry_image = pygame.image.load('barry.png').convert_alpha()
-
+Barry_image = pygame.image.load('barry.png').convert_alpha()
 
 framewidth = 64
 frameheight = 96
 rownum = 0
 framenum = 0
 ticker = 0
-
-
 
 bg_x1 = 0
 bg_x2 = 700
@@ -31,14 +27,13 @@ score = 0 #score
 class coin:
     def __init__(self, x):
         self.x = x
-        self.height = random.randint(50, 100)
+        self.height = random.randint(100, 50)
         self.gap = 150
         self.top_coin = pygame.transform.flip(coin_image, False, True)
         
-
 class Barry:
     def __init__(self):
-        self.y = 200
+        self.y = 400
         self.velocity = 0
         
     def fly(self):
@@ -59,11 +54,9 @@ class spikeTrap:
         self.top_spiketrap = pygame.transform.flip(spikeTrap_image, False, True)
         self.bottom_spikeTrap = spikeTrap_image
 
-        
     def move(self):
         self.x -= 2
-        
-        
+          
     def draw(self):
         top_height = self.height
         bottom_height = 800 - (self.height + self.gap)
@@ -71,7 +64,6 @@ class spikeTrap:
         screen.blit(self.top_spiketrap, (self.x, top_height - self.top_spiketrap.get_height()))
     
         screen.blit(self.bottom_spikeTrap, (self.x, self.height + self.gap))
-
 
 #--------------------------------------------------------------------
 def check_collision(bx, by, px, py):
@@ -88,7 +80,6 @@ spawn_spikeTrap = 0
 barry = Barry()
 ticker = 0
 running = True
-
 
 while running: # game loop---------------------------------------------------------------------------------------------
     clock.tick(60)
@@ -127,7 +118,7 @@ while running: # game loop------------------------------------------------------
     screen.fill((0, 0, 0))
     screen.blit(background_image, (bg_x1, 150))
     screen.blit(background_image, (bg_x2, 150))
-    screen.blit(barry_image, (50, barry.y), (framewidth*framenum, rownum*frameheight, framewidth, frameheight))
+    screen.blit(Barry_image, (50, barry.y), (framewidth*framenum, rownum*frameheight, framewidth, frameheight))
     
     score_text = font.render("Score:", True, (255, 255, 255))
     screen.blit(score_text, (650, 20))
@@ -143,7 +134,6 @@ while running: # game loop------------------------------------------------------
         bg_x1 = 800
     if bg_x2 <= -800:
         bg_x2 = 800
-    
     
     pygame.display.flip()
     
