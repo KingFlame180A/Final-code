@@ -1,0 +1,190 @@
+import pygame
+import random
+from platforms import Platform
+
+pygame.init()
+screen = pygame.display.set_mode((800,600))
+pygame.display.set_caption("Base Dash Clone")
+clock = pygame.time.Clock()
+
+WHITE = (255, 255, 255)
+BLUE = (0, 0, 255)
+GREEN = (0, 255, 0)
+GRAY = (100, 100, 100)
+
+pw, ph = 10, 20
+px, py = 50 , 50
+vx, vy = 5, 0
+g = 0.5
+jmp = -10
+double_jmp = -15
+jumping = False
+double_jump = False
+jump_pressed = False
+hit_pressed = False
+hitCounter = 0
+
+walk1 = pygame.image.load('walk1.png')
+walk2 = pygame.image.load('walk2.png')
+
+current_frame = 0
+animation_speed = 0.1
+frame_timer = 0
+platforms = []
+
+class Platform:
+    def __init__(self):
+        self.width = random.randint(20,30)
+        self.height = 30
+        self.x = 800
+        self.y = random.randint(200, 550)
+        self.speed = random.uniforms(2, 3)
+        self.type = random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
+        
+        self.color = random.randint(1, 100) <= 30
+        
+    def update(self):
+        self.x -= self.speed
+        
+    def draw(self, screen):
+        if self.type == 1:
+            pygame.draw.rect(screen, GREEN, (self.x, self.y, self.width, self.height))
+        else:
+            pygame.draw.rect(screen, BLUE, (self.x, self.y, self.width, self.height))
+        if self.has_base:
+            pygame.draw.rect(screen, GRAY, (self.x + 50, self.y - 40, 20, 40))
+
+    def check_collision(player_x, player_y, player_w, player_h):
+        for platform in platforms:
+            if (player_y + player_h <= platform.y and
+                player_y + player_h + vy >= platform.y and
+                player_x + player_w >= platfrom.x and 
+                player_x <= platform.x + platform.width):
+                if platform.check_base_collision(player_x, player_y):
+                    if dash_pressed:
+                        platform.has_base = False
+                    else:
+                        return 'stuck'
+            return platform
+        return None
+    
+    def check_ball_collision(player_x, player_y, ball):
+        distance = math.sqrt((ball.x - player_x) ** 2 + (ball.y - player_y) ** 2)\
+        if distance < 3:
+            return True
+        return False
+while True: #GAME LOOP####################################################################################################################################
+    clock.tick(60)
+    
+    #Event handling section-------------------------------------------------------------------------------------------------------------------------------
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            
+    keys = pygame.key.get_pressed()
+    
+    for ball in balls:
+        if check_ball_collision(px, py, ball):
+            if hit_pressed:
+                ball.speed = -ball.speed
+                print("Ball Reflected!")
+    #Physics section--------------------------------------------------------------------------------------------------------------------------------------
+    if keys[pygame.K_LEFT]:
+        px -= vx
+        
+    if keys[pygame.K_RIGHT]:
+        px += vx
+        
+    if not jumping and keys[pygame.K_UP]:
+        if not jump_pressed:
+            if not jumping:
+                vy = jmp
+                jumping = True
+            elif not double_jump:
+                vy = double_jmp
+                double_jump = True
+            jump_pressed = True
+    else:
+        jump_pressed = False
+        
+    vy += g
+    py += vy
+    
+    if py >= 600 - ph:
+        py = 600 - ph
+        jumping = False
+        vy = 0
+        
+    frame_timer += animation_speed
+    if frame_timer >= 1:
+        frame_timer = 0
+        current_frame = (current_frame + 1) % 2
+        
+    if current_frame == 0:
+        current_image = walk1
+    else:
+        current_image = walk2
+        
+    if random.randint(1, 100) <= 40:
+        platforms.append(Platform())
+        print("appending platform!")
+    for platform in platforms:
+        platform.update()
+        if platform.x + platform.width <200:
+            platforms.remove(platform)
+            
+    platform_collided = check_collision(px, py, pw, ph, platforms)
+    if platform_collided:
+        py = platform_collided.y - ph
+        vy = 0
+        jumping = False
+        double_jump = False
+        if platform_collided.has_base:
+            if px-platform_collided.x < 50 and px-platform_collided.x > 40:
+                if vx > 0 and dash_pressed == True:
+                    platform_collided.has_base = False
+                elif dash_pressed == False:
+                    vx = platform_coollided.speed*-1
+                else:
+                    vx = 0
+    else:
+        vy += g
+        py += vy
+        
+    if keys[pygame.K_Z]:
+        hit_pressed = True
+        hitCounter = 0
+        
+    hitCounter+=1
+    if hitCounter>20:
+        hit_pressed = False
+        
+    if keys[pygame.K_x]:
+        dash_pressed = True
+        dashCounter = 0
+        vx = dash_speed
+        
+    dashCounter += 1
+    if dashCounter > 20:
+        dash_pressed = False
+        vx = 3
+        
+    if keys[pygame.K_LEFT]:
+        vx = -3
+    elif keys[pygame.K_RIGHT]:
+        vx = 3
+    else: vx 0
+    #Render section---------------------------------------------------------------------------------------------------------------------------------------
+    screen.fill(WHITE)
+    
+    pygame.draw.rect(screen, BLUE, (px, py, pw, ph))
+    
+    if hit_pressed:
+        screen.blit(hit_image, (px, py))
+    else:
+        if current_frame == 0:
+            screen.blit(walk1, (px, py))
+        else:
+            screen.blit(walk2, (px, py))
+    
+    pygame.display.flip()
