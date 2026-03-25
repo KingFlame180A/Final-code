@@ -1,0 +1,134 @@
+import pygame
+import random
+import time
+
+pygame.init()
+screen = pygame.display.set_mode((800,600))
+pygame.display.set_caption("Fish Simulator")
+clock = pygame.time.Clock() 
+
+class Shark:
+    def __init__(self):
+        self.sharkImage = pygame.image.load("shark.png").convert_alpha()
+        pygame.Surface.set_colorkey (self.sharkImage, [255,0,255])
+    def draw(self, screen):
+        screen.blit(self.sharkImage, (500,200))   
+
+class Coral:
+    def __init__(self):
+        self.coralImage = pygame.image.load("coral.png").convert_alpha()
+        pygame.Surface.set_colorkey (self.coralImage, [255,0,255])
+    def draw(self, screen):
+        screen.blit(self.coralImage, (0,530))
+        
+class Seaweed:
+    def __init__(self):
+        self.seaweedImage = pygame.image.load("seaweed.png").convert_alpha()
+        pygame.Surface.set_colorkey (self.seaweedImage, [255,0,255])
+    def draw(self, screen):
+        screen.blit(self.seaweedImage, (300,455))  
+
+class Submarine:
+    def __init__(self):
+        self.submarineImage = pygame.image.load("submarine.png").convert_alpha()
+        pygame.Surface.set_colorkey (self.submarineImage, [255,0,255])
+    def draw(self, screen):
+        screen.blit(self.submarineImage, (0,0)) 
+        
+class Bubbles:
+    def __init__(self, x, y):
+        self.xpos = x
+        self.ypos = y
+    def move(self):
+        self.xpos -= random.randrange(-2, 3)
+        self.ypos += random.randrange(-1, 0)
+        if self.ypos < 0:
+            self.ypos = random.randrange(0, 900)
+    def draw(self):
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 2) 
+
+class Fishsliver:
+    def __init__(self):
+        self.fishsilverImage = pygame.image.load("fishsilver.png").convert_alpha()
+        pygame.Surface.set_colorkey (self.fishsilverImage, [255,0,255])
+        self.xpos = random.randint(0, 750)
+        self.ypos = random.randint(0, 550)
+        self.speed = 1
+        self.xDir = random.randint(-1,1)
+        self.yDir = random.randint(-1,1)
+        self.last_change_time = time.time() #grab starting time
+
+    def move(self):
+        # Move the fish
+        self.xpos += self.xDir* self.speed
+        self.ypos += self.yDir * self.speed
+
+        # Change direction every 3 seconds
+        if time.time() - self.last_change_time > 3:  
+            self.xDir = random.randint(-1,1)
+            self.yDir = random.randint(-1,1)
+            self.last_change_time = time.time() #reset the time
+
+        # Check for collision with walls and change direction
+        if self.xpos <= 0 or self.xpos >= 750:
+            self.xDir *= -1
+        if self.ypos <= 0 or self.ypos>= 550:
+            self.yDir *= -1
+
+    def draw(self, screen):
+        pygame.draw.rect(screen, (255, 255, 0), (self.xpos, self.ypos, 50, 30))
+
+# instantiate a fish object
+fishsilver = Fishsliver()
+
+submarine = Submarine()
+
+seaweed = Seaweed()
+
+coral = Coral()
+
+shark = Shark()
+
+bubbles = []
+
+for i in range(500):
+    bubbles.append(Bubbles(random.randrange(0, 800), random.randrange(-500, 1000)))
+
+running = True
+while running:# Game loop########################################################
+    clock.tick(60)
+    #input/event section-----------------------------
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+            
+    #physics/update section--------------------------
+    fishsilver.move()
+
+    for i in range(len(bubbles)):
+        bubbles[i].move()
+        
+    #render section----------------------------------
+    # Fill the screen with a background color
+    screen.fill((0, 150, 255))
+
+    # Draw the fish
+    fishsilver.draw(screen)
+    
+    submarine.draw(screen)
+    
+    seaweed.draw(screen)
+    
+    coral.draw(screen)
+    
+    shark.draw(screen)
+    
+    for i in range(len(bubbles)):
+        bubbles[i].draw()
+        
+    # Update the display
+    pygame.display.flip()
+
+    #end of game loop!#######################################################
+
+pygame.quit()
