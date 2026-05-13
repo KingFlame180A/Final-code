@@ -113,25 +113,25 @@ while True:
     elif mousePos[0] > 1000 and mousePos[0] < 1100 and mousePos[1] <100:
         Akey = 11
 
-    if mousePos[0] > 0 and mousePos[0] < 100 and mousePos[1] <130:#Accordion keys 2
+    if mousePos[0] > 50 and mousePos[0] < 100 and mousePos[1] >150:#Accordion keys 2
         Akey = 12 
-    elif mousePos[0] > 100 and mousePos[0] < 200 and mousePos[1] <130:
+    elif mousePos[0] > 100 and mousePos[0] < 150 and mousePos[1] >150:
         Akey = 13
-    elif mousePos[0] > 200 and mousePos[0] < 300 and mousePos[1] <130:
+    elif mousePos[0] > 150 and mousePos[0] < 200 and mousePos[1] >150:
         Akey = 14
-    elif mousePos[0] > 300 and mousePos[0] < 400 and mousePos[1] <130:
+    elif mousePos[0] > 200 and mousePos[0] < 250 and mousePos[1] >150:
         Akey = 15
-    elif mousePos[0] > 400 and mousePos[0] < 500 and mousePos[1] <130:
+    elif mousePos[0] > 250 and mousePos[0] < 300 and mousePos[1] >150:
         Akey = 16
-    elif mousePos[0] > 500 and mousePos[0] < 600 and mousePos[1] <130:
+    elif mousePos[0] > 300 and mousePos[0] < 350 and mousePos[1] >150:
         Akey = 17
-    elif mousePos[0] > 600 and mousePos[0] < 700 and mousePos[1] <130:
+    elif mousePos[0] > 350 and mousePos[0] < 400 and mousePos[1] >150:
         Akey = 18
-    elif mousePos[0] > 700 and mousePos[0] < 800 and mousePos[1] <130:
+    elif mousePos[0] > 400 and mousePos[0] < 450 and mousePos[1] >150:
         Akey = 19
-    elif mousePos[0] > 800 and mousePos[0] < 900 and mousePos[1] <130:
+    elif mousePos[0] > 450 and mousePos[0] < 500 and mousePos[1] >150:
         Akey = 20
-    elif mousePos[0] > 900 and mousePos[0] < 1000 and mousePos[1] <130:
+    elif mousePos[0] > 500 and mousePos[0] < 550 and mousePos[1] >150:
         Akey = 21
         
     if mousePos[0] > 0 and mousePos[0] < 100 and mousePos[1] >220:#Accordion keys 3
