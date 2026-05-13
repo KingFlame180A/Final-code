@@ -1,0 +1,406 @@
+import pygame
+pygame.init()
+pygame.display.set_caption("Accordian instrument")#window title
+screen = pygame.display.set_mode((1100, 1000))#game screen
+xpos = 0
+ypos = 0
+mousePos = (xpos, ypos) 
+press = False
+
+#Piano and Accordion audio
+pygame.mixer.init()
+k1 = pygame.mixer.Sound("key01.mp3")
+k2 = pygame.mixer.Sound("key02.mp3")
+k3 = pygame.mixer.Sound("key03.mp3")
+k4 = pygame.mixer.Sound("key04.mp3")
+k5 = pygame.mixer.Sound("key05.mp3")
+k6 = pygame.mixer.Sound("key06.mp3")
+k7 = pygame.mixer.Sound("key07.mp3")
+k8 = pygame.mixer.Sound("key08.mp3")
+k9 = pygame.mixer.Sound("key09.mp3")
+k10 = pygame.mixer.Sound("key10.mp3")
+k11 = pygame.mixer.Sound("key11.mp3")
+
+A1 = pygame.mixer.Sound("Akey01.mp3")
+A2 = pygame.mixer.Sound("Akey02.mp3")
+A3 = pygame.mixer.Sound("Akey03.mp3")
+A4 = pygame.mixer.Sound("Akey04.mp3")
+A5 = pygame.mixer.Sound("Akey05.mp3")
+A6 = pygame.mixer.Sound("Akey06.mp3")
+A7 = pygame.mixer.Sound("Akey07.mp3")
+A8 = pygame.mixer.Sound("Akey08.mp3")
+A9 = pygame.mixer.Sound("Akey09.mp3")
+A10 = pygame.mixer.Sound("Akey10.mp3")
+A11 = pygame.mixer.Sound("Akey11.mp3")
+A12 = pygame.mixer.Sound("Akey12.mp3")#Accordion key 2
+A13 = pygame.mixer.Sound("Akey13.mp3")
+A14 = pygame.mixer.Sound("Akey14.mp3")
+A15 = pygame.mixer.Sound("Akey15.mp3")
+A16 = pygame.mixer.Sound("Akey16.mp3")
+A17 = pygame.mixer.Sound("Akey17.mp3")
+A18 = pygame.mixer.Sound("Akey18.mp3")
+A19 = pygame.mixer.Sound("Akey19.mp3")
+A20 = pygame.mixer.Sound("Akey20.mp3")
+A21 = pygame.mixer.Sound("Akey21.mp3")
+A22 = pygame.mixer.Sound("Akey22.mp3")#Accordion key 3
+A23 = pygame.mixer.Sound("Akey23.mp3")
+A24 = pygame.mixer.Sound("Akey24.mp3")
+A25 = pygame.mixer.Sound("Akey25.mp3")
+A26 = pygame.mixer.Sound("Akey26.mp3")
+A27 = pygame.mixer.Sound("Akey27.mp3")
+A28 = pygame.mixer.Sound("Akey28.mp3")
+A29 = pygame.mixer.Sound("Akey29.mp3")
+A30 = pygame.mixer.Sound("Akey30.mp3")
+A31 = pygame.mixer.Sound("Akey31.mp3")
+A32 = pygame.mixer.Sound("Akey32.mp3")
+
+key = 0
+
+Akey = 0
+
+#gameloop-------------------------------------------------------------------------------------
+while True:
+    print(mousePos) 
+    
+    event = pygame.event.wait()
+    
+    #update/timer section---------------------------------------------------------------------    
+    if mousePos[0] > 0 and mousePos[0] < 100 and mousePos[1] >500:
+        key = 1
+    elif mousePos[0] > 100 and mousePos[0] < 200 and mousePos[1] >500:
+        key = 2
+    elif mousePos[0] > 200 and mousePos[0] < 300 and mousePos[1] >500:
+        key = 3
+    elif mousePos[0] > 300 and mousePos[0] < 400 and mousePos[1] >500:
+        key = 4
+    elif mousePos[0] > 400 and mousePos[0] < 500 and mousePos[1] >500:
+        key = 5
+    elif mousePos[0] > 500 and mousePos[0] < 600 and mousePos[1] >500:
+        key = 6
+    elif mousePos[0] > 600 and mousePos[0] < 700 and mousePos[1] >500:
+        key = 7
+    elif mousePos[0] > 700 and mousePos[0] < 800 and mousePos[1] >500:
+        key = 8
+    elif mousePos[0] > 800 and mousePos[0] < 900 and mousePos[1] >500:
+        key = 9
+    elif mousePos[0] > 900 and mousePos[0] < 1000 and mousePos[1] >500:
+        key = 10
+    elif mousePos[0] > 1000 and mousePos[0] < 1100 and mousePos[1] >500:
+        key = 11
+    else:
+        key = 0
+        
+    if mousePos[0] > 0 and mousePos[0] < 100 and mousePos[1] <100:
+        Akey = 1
+    elif mousePos[0] > 100 and mousePos[0] < 200 and mousePos[1] <100:
+        Akey = 2
+    elif mousePos[0] > 200 and mousePos[0] < 300 and mousePos[1] <100:
+        Akey = 3
+    elif mousePos[0] > 300 and mousePos[0] < 400 and mousePos[1] <100:
+        Akey = 4
+    elif mousePos[0] > 400 and mousePos[0] < 500 and mousePos[1] <100:
+        Akey = 5
+    elif mousePos[0] > 500 and mousePos[0] < 600 and mousePos[1] <100:
+        Akey = 6
+    elif mousePos[0] > 600 and mousePos[0] < 700 and mousePos[1] <100:
+        Akey = 7
+    elif mousePos[0] > 700 and mousePos[0] < 800 and mousePos[1] <100:
+        Akey = 8
+    elif mousePos[0] > 800 and mousePos[0] < 900 and mousePos[1] <100:
+        Akey = 9
+    elif mousePos[0] > 900 and mousePos[0] < 1000 and mousePos[1] <100:
+        Akey = 10
+    elif mousePos[0] > 1000 and mousePos[0] < 1100 and mousePos[1] <100:
+        Akey = 11
+
+    if mousePos[0] > 0 and mousePos[0] < 100 and mousePos[1] <120:#Accordion keys 2
+        Akey = 12 
+    elif mousePos[0] > 100 and mousePos[0] < 200 and mousePos[1] <120:
+        Akey = 13
+    elif mousePos[0] > 200 and mousePos[0] < 300 and mousePos[1] <120:
+        Akey = 14
+    elif mousePos[0] > 300 and mousePos[0] < 400 and mousePos[1] <120:
+        Akey = 15
+    elif mousePos[0] > 400 and mousePos[0] < 500 and mousePos[1] <120:
+        Akey = 16
+    elif mousePos[0] > 500 and mousePos[0] < 600 and mousePos[1] <120:
+        Akey = 17
+    elif mousePos[0] > 600 and mousePos[0] < 700 and mousePos[1] <120:
+        Akey = 18
+    elif mousePos[0] > 700 and mousePos[0] < 800 and mousePos[1] <120:
+        Akey = 19
+    elif mousePos[0] > 800 and mousePos[0] < 900 and mousePos[1] <120:
+        Akey = 20
+    elif mousePos[0] > 900 and mousePos[0] < 1000 and mousePos[1] <120:
+        Akey = 21
+        
+    if mousePos[0] > 0 and mousePos[0] < 100 and mousePos[1] <220:#Accordion keys 3
+        Akey = 22 
+    elif mousePos[0] > 100 and mousePos[0] < 200 and mousePos[1] <220:
+        Akey = 23
+    elif mousePos[0] > 200 and mousePos[0] < 300 and mousePos[1] <220:
+        Akey = 24
+    elif mousePos[0] > 300 and mousePos[0] < 400 and mousePos[1] <220:
+        Akey = 25
+    elif mousePos[0] > 400 and mousePos[0] < 500 and mousePos[1] <220:
+        Akey = 26
+    elif mousePos[0] > 500 and mousePos[0] < 600 and mousePos[1] <220:
+        Akey = 27
+    elif mousePos[0] > 600 and mousePos[0] < 700 and mousePos[1] <220:
+        Akey = 28
+    elif mousePos[0] > 700 and mousePos[0] < 800 and mousePos[1] <220:
+        Akey = 29
+    elif mousePos[0] > 800 and mousePos[0] < 900 and mousePos[1] <220:
+        Akey = 30
+    elif mousePos[0] > 900 and mousePos[0] < 1000 and mousePos[1] <220:
+        Akey = 31
+    elif mousePos[0] > 1000 and mousePos[0] < 1100 and mousePos[1] <220:
+        Akey = 32
+    else:
+        Akey = 0
+    
+    #input section-----------------------------------------------------------------------------
+    if event.type == pygame.QUIT: 
+        break
+
+    if event.type == pygame.MOUSEBUTTONDOWN:
+        press = True
+
+    if event.type == pygame.MOUSEBUTTONUP:
+        press = False
+
+    if event.type == pygame.MOUSEMOTION:
+        mousePos = event.pos
+
+    #render section----------------------------------------------------------------------------
+
+    #Accordion keys1
+    pygame.draw.circle(screen, (255, 255, 255), (50, 50), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (150, 50), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (250, 50), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (350, 50), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (450, 50), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (550, 50), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (650, 50), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (750, 50), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (850, 50), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (950, 50), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (1050, 50), 50)
+    
+    #Accordion keys2
+    pygame.draw.circle(screen, (255, 255, 255), (100, 140), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (200, 140), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (300, 140), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (400, 140), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (500, 140), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (600, 140), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (700, 140), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (800, 140), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (900, 140), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (1000, 140), 50)
+    
+    #Accordion keys3
+    pygame.draw.circle(screen, (255, 255, 255), (50, 240), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (150, 240), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (250, 240), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (350, 240), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (450, 240), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (550, 240), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (650, 240), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (750, 240), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (850, 240), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (950, 240), 50)
+    pygame.draw.circle(screen, (255, 255, 255), (1050, 240), 50)
+    
+    #Accordian part
+    pygame.draw.rect(screen, (139, 0, 0), (0, 300, 1100, 400))#RED
+    pygame.draw.rect(screen, (150, 150, 150), (0, 350, 1100, 50))
+    pygame.draw.rect(screen, (128, 128, 128), (0, 400, 1100, 50))
+    pygame.draw.rect(screen, (150, 150, 150), (0, 450, 1100, 50))
+    pygame.draw.rect(screen, (128, 128, 128), (0, 500, 1100, 50))
+    pygame.draw.rect(screen, (150, 150, 150), (0, 550, 1100, 50))
+    pygame.draw.rect(screen, (128, 128, 128), (0, 600, 1100, 50))
+    
+    #Accordion outlines
+    pygame.draw.rect(screen, (0, 0, 0), (0, 350, 1100, 50), 2)
+    pygame.draw.rect(screen, (0, 0, 0), (0, 400, 1100, 50), 2)
+    pygame.draw.rect(screen, (0, 0, 0), (0, 450, 1100, 50), 2)
+    pygame.draw.rect(screen, (0, 0, 0), (0, 500, 1100, 50), 2)
+    pygame.draw.rect(screen, (0, 0, 0), (0, 550, 1100, 50), 2)
+    pygame.draw.rect(screen, (0, 0, 0), (0, 600, 1100, 50), 2)
+    
+    #Piano keys 
+    pygame.draw.rect(screen, (255, 255, 255), (0, 700, 100, 300))
+    pygame.draw.rect(screen, (255, 255, 255), (100, 700, 100, 300))
+    pygame.draw.rect(screen, (255, 255, 255), (200, 700, 100, 300))
+    pygame.draw.rect(screen, (255, 255, 255), (300, 700, 100, 300))
+    pygame.draw.rect(screen, (255, 255, 255), (400, 700, 100, 300))
+    pygame.draw.rect(screen, (255, 255, 255), (500, 700, 100, 300))
+    pygame.draw.rect(screen, (255, 255, 255), (600, 700, 100, 300))
+    pygame.draw.rect(screen, (255, 255, 255), (700, 700, 100, 300))
+    pygame.draw.rect(screen, (255, 255, 255), (800, 700, 100, 300))
+    pygame.draw.rect(screen, (255, 255, 255), (900, 700, 100, 300))
+    pygame.draw.rect(screen, (255, 255, 255), (1000, 700, 100, 300))
+    
+    #Paino key outline
+    pygame.draw.rect(screen, (0, 0, 0), (0, 700, 100, 300), 2)
+    pygame.draw.rect(screen, (0, 0, 0), (100, 700, 100, 300), 2)
+    pygame.draw.rect(screen, (0, 0, 0), (200, 700, 100, 300), 2)
+    pygame.draw.rect(screen, (0, 0, 0), (300, 700, 100, 300), 2)
+    pygame.draw.rect(screen, (0, 0, 0), (400, 700, 100, 300), 2)
+    pygame.draw.rect(screen, (0, 0, 0), (500, 700, 100, 300), 2)
+    pygame.draw.rect(screen, (0, 0, 0), (600, 700, 100, 300), 2)
+    pygame.draw.rect(screen, (0, 0, 0), (700, 700, 100, 300), 2)
+    pygame.draw.rect(screen, (0, 0, 0), (800, 700, 100, 300), 2)
+    pygame.draw.rect(screen, (0, 0, 0), (900, 700, 100, 300), 2)
+    pygame.draw.rect(screen, (0, 0, 0), (1000, 700, 100, 300), 2)
+    
+    #Paino and accordion key is pressed
+    if press == True:
+        if key == 0:#Pressed piano
+            print("no piano key")
+        elif key == 1:
+            pygame.mixer.Sound.play(k1)
+            pygame.draw.rect(screen, (150,150,150), (0,700,100,300))
+        elif key == 2:
+            pygame.mixer.Sound.play(k2)
+            pygame.draw.rect(screen, (150,150,150), (100,700,100,300))
+        elif key == 3:
+            pygame.mixer.Sound.play(k3)
+            pygame.draw.rect(screen, (150,150,150), (200,700,100,300))
+        elif key == 4:
+            pygame.mixer.Sound.play(k4)
+            pygame.draw.rect(screen, (150,150,150), (300,700,100,300))
+        elif key == 5:
+            pygame.mixer.Sound.play(k5)
+            pygame.draw.rect(screen, (150,150,150), (400,700,100,300))
+        elif key == 6:
+            pygame.mixer.Sound.play(k6)
+            pygame.draw.rect(screen, (150,150,150), (500,700,100,300))
+        elif key == 7:
+            pygame.mixer.Sound.play(k7)
+            pygame.draw.rect(screen, (150,150,150), (600,700,100,300))
+        elif key == 8:
+            pygame.mixer.Sound.play(k8)
+            pygame.draw.rect(screen, (150,150,150), (700,700,100,300))
+        elif key == 9:
+            pygame.mixer.Sound.play(k9)
+            pygame.draw.rect(screen, (150,150,150), (800,700,100,300))
+        elif key == 10:
+            pygame.mixer.Sound.play(k10)
+            pygame.draw.rect(screen, (150,150,150), (900,700,100,300))
+        elif key == 11:
+            pygame.mixer.Sound.play(k11)
+            pygame.draw.rect(screen, (150,150,150), (1000,700,100,300))
+        
+    if press == True:
+        if Akey == 0:#Pressed accordion
+            print("no accordion key")
+        elif Akey == 1:
+            pygame.mixer.Sound.play(A1)
+            pygame.draw.circle(screen, (150,150,150), (50, 50), 50)
+        elif Akey == 2:
+            pygame.mixer.Sound.play(A2)
+            pygame.draw.circle(screen, (150,150,150), (150, 50), 50)
+        elif Akey == 3:
+            pygame.mixer.Sound.play(A3)
+            pygame.draw.circle(screen, (150,150,150), (250, 50), 50)
+        elif Akey == 4:
+            pygame.mixer.Sound.play(A4)
+            pygame.draw.circle(screen, (150,150,150), (350, 50), 50)
+        elif Akey == 5:
+            pygame.mixer.Sound.play(A5)
+            pygame.draw.circle(screen, (150,150,150), (450, 50), 50)
+        elif Akey == 6:
+            pygame.mixer.Sound.play(A6)
+            pygame.draw.circle(screen, (150,150,150), (550, 50), 50)
+        elif Akey == 7:
+            pygame.mixer.Sound.play(A7)
+            pygame.draw.circle(screen, (150,150,150), (650, 50), 50)
+        elif Akey == 8:
+            pygame.mixer.Sound.play(A8)
+            pygame.draw.circle(screen, (150,150,150), (750, 50), 50)
+        elif Akey == 9:
+            pygame.mixer.Sound.play(A9)
+            pygame.draw.circle(screen, (150,150,150), (850, 50), 50)
+        elif Akey == 10:
+            pygame.mixer.Sound.play(A10)
+            pygame.draw.circle(screen, (150,150,150), (950, 50), 50)
+        elif Akey == 11:
+            pygame.mixer.Sound.play(A11)
+            pygame.draw.circle(screen, (150,150,150), (1050, 50), 50)
+        
+    if press == True:
+        if Akey == 0:#Accordion keys2
+            print("no accordion key 2")
+        elif Akey == 12:
+            pygame.mixer.Sound.play(A12)
+            pygame.draw.circle(screen, (150,150,150), (100, 140), 50)
+        elif Akey == 13:
+            pygame.mixer.Sound.play(A13)
+            pygame.draw.circle(screen, (150,150,150), (200, 140), 50)
+        elif Akey == 14:
+            pygame.mixer.Sound.play(A14)
+            pygame.draw.circle(screen, (150,150,150), (300, 140), 50)
+        elif Akey == 15:
+            pygame.mixer.Sound.play(A15)
+            pygame.draw.circle(screen, (150,150,150), (400, 140), 50)
+        elif Akey == 16:
+            pygame.mixer.Sound.play(A16)
+            pygame.draw.circle(screen, (150,150,150), (500, 140), 50)
+        elif Akey == 17:
+            pygame.mixer.Sound.play(A17)
+            pygame.draw.circle(screen, (150,150,150), (600, 140), 50)
+        elif Akey == 18:
+            pygame.mixer.Sound.play(A18)
+            pygame.draw.circle(screen, (150,150,150), (700, 140), 50)
+        elif Akey == 19:
+            pygame.mixer.Sound.play(A19)
+            pygame.draw.circle(screen, (150,150,150), (800, 140), 50)
+        elif Akey == 20:
+            pygame.mixer.Sound.play(A20)
+            pygame.draw.circle(screen, (150,150,150), (900, 140), 50)
+        elif Akey == 21:
+            pygame.mixer.Sound.play(A21)
+            pygame.draw.circle(screen, (150,150,150), (1000, 140), 50)
+    
+    if press == True:
+        if Akey == 0:#Accordion keys3
+            print("no accordion key 3")
+        elif Akey == 22: 
+            pygame.mixer.Sound.play(A22)
+            pygame.draw.circle(screen, (150,150,150), (50, 240), 50)
+        elif Akey == 23: 
+            pygame.mixer.Sound.play(A23)
+            pygame.draw.circle(screen, (150,150,150), (150, 240), 50)
+        elif Akey == 24: 
+            pygame.mixer.Sound.play(A23)
+            pygame.draw.circle(screen, (150,150,150), (250, 240), 50)
+        elif Akey == 25: 
+            pygame.mixer.Sound.play(A23)
+            pygame.draw.circle(screen, (150,150,150), (350, 240), 50)
+        elif Akey == 26: 
+            pygame.mixer.Sound.play(A23)
+            pygame.draw.circle(screen, (150,150,150), (450, 240), 50)
+        elif Akey == 27: 
+            pygame.mixer.Sound.play(A23)
+            pygame.draw.circle(screen, (150,150,150), (550, 240), 50)
+        elif Akey == 28: 
+            pygame.mixer.Sound.play(A23)
+            pygame.draw.circle(screen, (150,150,150), (650, 240), 50)
+        elif Akey == 29: 
+            pygame.mixer.Sound.play(A23)
+            pygame.draw.circle(screen, (150,150,150), (750, 240), 50)
+        elif Akey == 30: 
+            pygame.mixer.Sound.play(A23)
+            pygame.draw.circle(screen, (150,150,150), (850, 240), 50)
+        elif Akey == 31: 
+            pygame.mixer.Sound.play(A23)
+            pygame.draw.circle(screen, (150,150,150), (950, 240), 50)
+        elif Akey == 32: 
+            pygame.mixer.Sound.play(A23)
+            pygame.draw.circle(screen, (150,150,150), (1050, 240), 50)
+        
+    pygame.display.flip() 
+
+pygame.quit()
