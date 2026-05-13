@@ -113,48 +113,48 @@ while True:
     elif mousePos[0] > 1000 and mousePos[0] < 1100 and mousePos[1] <100:
         Akey = 11
 
-    if mousePos[0] > 0 and mousePos[0] < 100 and mousePos[1] <120:#Accordion keys 2
+    if mousePos[0] > 0 and mousePos[0] < 100 and mousePos[1] <130:#Accordion keys 2
         Akey = 12 
-    elif mousePos[0] > 100 and mousePos[0] < 200 and mousePos[1] <120:
+    elif mousePos[0] > 100 and mousePos[0] < 200 and mousePos[1] <130:
         Akey = 13
-    elif mousePos[0] > 200 and mousePos[0] < 300 and mousePos[1] <120:
+    elif mousePos[0] > 200 and mousePos[0] < 300 and mousePos[1] <130:
         Akey = 14
-    elif mousePos[0] > 300 and mousePos[0] < 400 and mousePos[1] <120:
+    elif mousePos[0] > 300 and mousePos[0] < 400 and mousePos[1] <130:
         Akey = 15
-    elif mousePos[0] > 400 and mousePos[0] < 500 and mousePos[1] <120:
+    elif mousePos[0] > 400 and mousePos[0] < 500 and mousePos[1] <130:
         Akey = 16
-    elif mousePos[0] > 500 and mousePos[0] < 600 and mousePos[1] <120:
+    elif mousePos[0] > 500 and mousePos[0] < 600 and mousePos[1] <130:
         Akey = 17
-    elif mousePos[0] > 600 and mousePos[0] < 700 and mousePos[1] <120:
+    elif mousePos[0] > 600 and mousePos[0] < 700 and mousePos[1] <130:
         Akey = 18
-    elif mousePos[0] > 700 and mousePos[0] < 800 and mousePos[1] <120:
+    elif mousePos[0] > 700 and mousePos[0] < 800 and mousePos[1] <130:
         Akey = 19
-    elif mousePos[0] > 800 and mousePos[0] < 900 and mousePos[1] <120:
+    elif mousePos[0] > 800 and mousePos[0] < 900 and mousePos[1] <130:
         Akey = 20
-    elif mousePos[0] > 900 and mousePos[0] < 1000 and mousePos[1] <120:
+    elif mousePos[0] > 900 and mousePos[0] < 1000 and mousePos[1] <130:
         Akey = 21
         
-    if mousePos[0] > 0 and mousePos[0] < 100 and mousePos[1] <220:#Accordion keys 3
+    if mousePos[0] > 0 and mousePos[0] < 100 and mousePos[1] >220:#Accordion keys 3
         Akey = 22 
-    elif mousePos[0] > 100 and mousePos[0] < 200 and mousePos[1] <220:
+    elif mousePos[0] > 100 and mousePos[0] < 200 and mousePos[1] >220:
         Akey = 23
-    elif mousePos[0] > 200 and mousePos[0] < 300 and mousePos[1] <220:
+    elif mousePos[0] > 200 and mousePos[0] < 300 and mousePos[1] >220:
         Akey = 24
-    elif mousePos[0] > 300 and mousePos[0] < 400 and mousePos[1] <220:
+    elif mousePos[0] > 300 and mousePos[0] < 400 and mousePos[1] >220:
         Akey = 25
-    elif mousePos[0] > 400 and mousePos[0] < 500 and mousePos[1] <220:
+    elif mousePos[0] > 400 and mousePos[0] < 500 and mousePos[1] >220:
         Akey = 26
-    elif mousePos[0] > 500 and mousePos[0] < 600 and mousePos[1] <220:
+    elif mousePos[0] > 500 and mousePos[0] < 600 and mousePos[1] >220:
         Akey = 27
-    elif mousePos[0] > 600 and mousePos[0] < 700 and mousePos[1] <220:
+    elif mousePos[0] > 600 and mousePos[0] < 700 and mousePos[1] >220:
         Akey = 28
-    elif mousePos[0] > 700 and mousePos[0] < 800 and mousePos[1] <220:
+    elif mousePos[0] > 700 and mousePos[0] < 800 and mousePos[1] >220:
         Akey = 29
-    elif mousePos[0] > 800 and mousePos[0] < 900 and mousePos[1] <220:
+    elif mousePos[0] > 800 and mousePos[0] < 900 and mousePos[1] >220:
         Akey = 30
-    elif mousePos[0] > 900 and mousePos[0] < 1000 and mousePos[1] <220:
+    elif mousePos[0] > 900 and mousePos[0] < 1000 and mousePos[1] >220:
         Akey = 31
-    elif mousePos[0] > 1000 and mousePos[0] < 1100 and mousePos[1] <220:
+    elif mousePos[0] > 1000 and mousePos[0] < 1100 and mousePos[1] >220:
         Akey = 32
     else:
         Akey = 0
@@ -374,31 +374,31 @@ while True:
             pygame.mixer.Sound.play(A23)
             pygame.draw.circle(screen, (150,150,150), (150, 240), 50)
         elif Akey == 24: 
-            pygame.mixer.Sound.play(A23)
+            pygame.mixer.Sound.play(A24)
             pygame.draw.circle(screen, (150,150,150), (250, 240), 50)
         elif Akey == 25: 
-            pygame.mixer.Sound.play(A23)
+            pygame.mixer.Sound.play(A25)
             pygame.draw.circle(screen, (150,150,150), (350, 240), 50)
-        elif Akey == 26: 
-            pygame.mixer.Sound.play(A23)
+        elif Akey == 26:
+            pygame.mixer.Sound.play(A26)
             pygame.draw.circle(screen, (150,150,150), (450, 240), 50)
         elif Akey == 27: 
-            pygame.mixer.Sound.play(A23)
+            pygame.mixer.Sound.play(A27)
             pygame.draw.circle(screen, (150,150,150), (550, 240), 50)
         elif Akey == 28: 
-            pygame.mixer.Sound.play(A23)
+            pygame.mixer.Sound.play(A28)
             pygame.draw.circle(screen, (150,150,150), (650, 240), 50)
         elif Akey == 29: 
-            pygame.mixer.Sound.play(A23)
+            pygame.mixer.Sound.play(A29)
             pygame.draw.circle(screen, (150,150,150), (750, 240), 50)
         elif Akey == 30: 
-            pygame.mixer.Sound.play(A23)
+            pygame.mixer.Sound.play(A30)
             pygame.draw.circle(screen, (150,150,150), (850, 240), 50)
         elif Akey == 31: 
-            pygame.mixer.Sound.play(A23)
+            pygame.mixer.Sound.play(A31)
             pygame.draw.circle(screen, (150,150,150), (950, 240), 50)
         elif Akey == 32: 
-            pygame.mixer.Sound.play(A23)
+            pygame.mixer.Sound.play(A32)
             pygame.draw.circle(screen, (150,150,150), (1050, 240), 50)
         
     pygame.display.flip() 
