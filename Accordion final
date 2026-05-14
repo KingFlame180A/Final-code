@@ -58,6 +58,24 @@ key = 0
 
 Akey = 0
 
+class Keys:
+    def __init__(self, xpos, ypos):
+        self.xpos = xpos
+        self.ypos = ypos
+        self.isPressed = True
+    def draw(self):
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
+
 #gameloop-------------------------------------------------------------------------------------
 while True:
     print(mousePos) 
@@ -90,7 +108,7 @@ while True:
     else:
         key = 0
         
-    if mousePos[0] > 0 and mousePos[0] < 100 and mousePos[1] <100:
+    if mousePos[0] > 0 and mousePos[0] < 100 and mousePos[1] <100: #Accordion keys 1
         Akey = 1
     elif mousePos[0] > 100 and mousePos[0] < 200 and mousePos[1] <100:
         Akey = 2
@@ -113,25 +131,25 @@ while True:
     elif mousePos[0] > 1000 and mousePos[0] < 1100 and mousePos[1] <100:
         Akey = 11
 
-    if mousePos[0] > 50 and mousePos[0] < 100 and mousePos[1] >150:#Accordion keys 2
+    if mousePos[0] > 100 and mousePos[0] < 150 and mousePos[1] >150:#Accordion keys 2
         Akey = 12 
-    elif mousePos[0] > 100 and mousePos[0] < 150 and mousePos[1] >150:
-        Akey = 13
     elif mousePos[0] > 150 and mousePos[0] < 200 and mousePos[1] >150:
-        Akey = 14
+        Akey = 13
     elif mousePos[0] > 200 and mousePos[0] < 250 and mousePos[1] >150:
-        Akey = 15
+        Akey = 14
     elif mousePos[0] > 250 and mousePos[0] < 300 and mousePos[1] >150:
-        Akey = 16
+        Akey = 15
     elif mousePos[0] > 300 and mousePos[0] < 350 and mousePos[1] >150:
-        Akey = 17
+        Akey = 16
     elif mousePos[0] > 350 and mousePos[0] < 400 and mousePos[1] >150:
-        Akey = 18
+        Akey = 17
     elif mousePos[0] > 400 and mousePos[0] < 450 and mousePos[1] >150:
-        Akey = 19
+        Akey = 18
     elif mousePos[0] > 450 and mousePos[0] < 500 and mousePos[1] >150:
-        Akey = 20
+        Akey = 19
     elif mousePos[0] > 500 and mousePos[0] < 550 and mousePos[1] >150:
+        Akey = 20
+    elif mousePos[0] > 550 and mousePos[0] < 600 and mousePos[1] >150:
         Akey = 21
         
     if mousePos[0] > 0 and mousePos[0] < 100 and mousePos[1] >220:#Accordion keys 3
