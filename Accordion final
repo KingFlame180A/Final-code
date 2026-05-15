@@ -230,7 +230,7 @@ while True:
     pygame.draw.circle(screen, (255, 255, 255), (950, 240), 50)
     pygame.draw.circle(screen, (255, 255, 255), (1050, 240), 50)
     
-    #Accordian part
+    #Accordian lines
     pygame.draw.rect(screen, (139, 0, 0), (0, 300, 1100, 400))#RED
     pygame.draw.rect(screen, (150, 150, 150), (0, 350, 1100, 50))
     pygame.draw.rect(screen, (128, 128, 128), (0, 400, 1100, 50))
