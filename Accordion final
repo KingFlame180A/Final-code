@@ -32,6 +32,7 @@ A8 = pygame.mixer.Sound("Akey08.mp3")
 A9 = pygame.mixer.Sound("Akey09.mp3")
 A10 = pygame.mixer.Sound("Akey10.mp3")
 A11 = pygame.mixer.Sound("Akey11.mp3")
+
 A12 = pygame.mixer.Sound("Akey12.mp3")#Accordion key 2
 A13 = pygame.mixer.Sound("Akey13.mp3")
 A14 = pygame.mixer.Sound("Akey14.mp3")
@@ -42,6 +43,7 @@ A18 = pygame.mixer.Sound("Akey18.mp3")
 A19 = pygame.mixer.Sound("Akey19.mp3")
 A20 = pygame.mixer.Sound("Akey20.mp3")
 A21 = pygame.mixer.Sound("Akey21.mp3")
+
 A22 = pygame.mixer.Sound("Akey22.mp3")#Accordion key 3
 A23 = pygame.mixer.Sound("Akey23.mp3")
 A24 = pygame.mixer.Sound("Akey24.mp3")
@@ -64,18 +66,35 @@ class Keys:
         self.ypos = ypos
         self.isPressed = True
     def draw(self):
-        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
-        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
-        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
-        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
-        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
-        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
-        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
-        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
-        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
-        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
-        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 100, 300))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
 
+class Buttons:
+    def __init__(self, xpos, ypos):
+        self.xpos = xpos
+        self.ypos = ypos
+        self.isPressed = True
+    def draw(self):
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
+        pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
 #gameloop-------------------------------------------------------------------------------------
 while True:
     print(mousePos) 
@@ -130,49 +149,47 @@ while True:
         Akey = 10
     elif mousePos[0] > 1000 and mousePos[0] < 1100 and mousePos[1] <100:
         Akey = 11
-
-    if mousePos[0] > 100 and mousePos[0] < 150 and mousePos[1] >150:#Accordion keys 2
+    elif mousePos[0] > 0 and mousePos[0] < 100 and mousePos[1] >150:#Accordion keys 2
         Akey = 12 
-    elif mousePos[0] > 150 and mousePos[0] < 200 and mousePos[1] >150:
+    elif mousePos[0] > 100 and mousePos[0] < 200 and mousePos[1] >150:
         Akey = 13
-    elif mousePos[0] > 200 and mousePos[0] < 250 and mousePos[1] >150:
+    elif mousePos[0] > 200 and mousePos[0] < 300 and mousePos[1] >150:
         Akey = 14
-    elif mousePos[0] > 250 and mousePos[0] < 300 and mousePos[1] >150:
+    elif mousePos[0] > 300 and mousePos[0] < 400 and mousePos[1] >150:
         Akey = 15
-    elif mousePos[0] > 300 and mousePos[0] < 350 and mousePos[1] >150:
+    elif mousePos[0] > 400 and mousePos[0] < 500 and mousePos[1] >150:
         Akey = 16
-    elif mousePos[0] > 350 and mousePos[0] < 400 and mousePos[1] >150:
+    elif mousePos[0] > 500 and mousePos[0] < 600 and mousePos[1] >150:
         Akey = 17
-    elif mousePos[0] > 400 and mousePos[0] < 450 and mousePos[1] >150:
+    elif mousePos[0] > 600 and mousePos[0] < 700 and mousePos[1] >150:
         Akey = 18
-    elif mousePos[0] > 450 and mousePos[0] < 500 and mousePos[1] >150:
+    elif mousePos[0] > 700 and mousePos[0] < 800 and mousePos[1] >150:
         Akey = 19
-    elif mousePos[0] > 500 and mousePos[0] < 550 and mousePos[1] >150:
+    elif mousePos[0] > 800 and mousePos[0] < 900 and mousePos[1] >150:
         Akey = 20
-    elif mousePos[0] > 550 and mousePos[0] < 600 and mousePos[1] >150:
+    elif mousePos[0] > 900 and mousePos[0] < 1000 and mousePos[1] >150:
         Akey = 21
-        
-    if mousePos[0] > 0 and mousePos[0] < 100 and mousePos[1] >220:#Accordion keys 3
+    elif mousePos[0] > 0 and mousePos[0] < 100 and mousePos[1] >200:#Accordion keys 3
         Akey = 22 
-    elif mousePos[0] > 100 and mousePos[0] < 200 and mousePos[1] >220:
+    elif mousePos[0] > 100 and mousePos[0] < 200 and mousePos[1] >200:
         Akey = 23
-    elif mousePos[0] > 200 and mousePos[0] < 300 and mousePos[1] >220:
+    elif mousePos[0] > 200 and mousePos[0] < 300 and mousePos[1] >200:
         Akey = 24
-    elif mousePos[0] > 300 and mousePos[0] < 400 and mousePos[1] >220:
+    elif mousePos[0] > 300 and mousePos[0] < 400 and mousePos[1] >200:
         Akey = 25
-    elif mousePos[0] > 400 and mousePos[0] < 500 and mousePos[1] >220:
+    elif mousePos[0] > 400 and mousePos[0] < 500 and mousePos[1] >200:
         Akey = 26
-    elif mousePos[0] > 500 and mousePos[0] < 600 and mousePos[1] >220:
+    elif mousePos[0] > 500 and mousePos[0] < 600 and mousePos[1] >200:
         Akey = 27
-    elif mousePos[0] > 600 and mousePos[0] < 700 and mousePos[1] >220:
+    elif mousePos[0] > 600 and mousePos[0] < 700 and mousePos[1] >200:
         Akey = 28
-    elif mousePos[0] > 700 and mousePos[0] < 800 and mousePos[1] >220:
+    elif mousePos[0] > 700 and mousePos[0] < 800 and mousePos[1] >200:
         Akey = 29
-    elif mousePos[0] > 800 and mousePos[0] < 900 and mousePos[1] >220:
+    elif mousePos[0] > 800 and mousePos[0] < 900 and mousePos[1] >200:
         Akey = 30
-    elif mousePos[0] > 900 and mousePos[0] < 1000 and mousePos[1] >220:
+    elif mousePos[0] > 900 and mousePos[0] < 1000 and mousePos[1] >200:
         Akey = 31
-    elif mousePos[0] > 1000 and mousePos[0] < 1100 and mousePos[1] >220:
+    elif mousePos[0] > 1000 and mousePos[0] < 1100 and mousePos[1] >200:
         Akey = 32
     else:
         Akey = 0
