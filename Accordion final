@@ -131,6 +131,41 @@ class Buttons:
         pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
         pygame.draw.rect(screen, (255, 255, 255), (self.xpos, self.ypos, 10, 30))
         
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)#Accordion keys1
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)#Acordion keys2
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)#Accordion keys3
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        pygame.draw.circle(screen, (255, 255, 255), (self.xpos, self.ypos), 50)
+        
 #gameloop-------------------------------------------------------------------------------------
 while True:
     print(mousePos) 
